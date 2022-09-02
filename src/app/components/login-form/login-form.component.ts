@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -14,10 +15,15 @@ export class LoginFormComponent implements OnInit {
     lastName: new FormControl<string>('', { nonNullable: true }),
     age: new FormControl<number | null>(null, { nonNullable: false, validators: [Validators.min(0), isNumberValidator()] }),
   });
+  titlePage: string | undefined = '';
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.title.subscribe(r => this.titlePage = r);
+  }
 
   onReset(): void {
     this.form.reset();
