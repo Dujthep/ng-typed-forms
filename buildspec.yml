@@ -19,3 +19,9 @@ phases:
       - cd dist/$APP_NAME
       - ls -la
       - aws s3 sync . s3://dujthep.stop --delete
+artifacts:
+  files:
+    - '**/*'
+  base-directory: base_dir
+  name: build-artifact-name
+  discard-paths: no
