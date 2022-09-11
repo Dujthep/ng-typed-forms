@@ -1,5 +1,4 @@
 <form [formGroup]="form">
-  {{form.getRawValue() | json}}
   <input type="text" placeholder="email" formControlName="email">
   <input type="password" placeholder="password" formControlName="password">
   <input type="text" placeholder="firstName" formControlName="firstName">
@@ -8,4 +7,3 @@
   <div *ngIf="form.get('age')?.errors?.['isNotNumber']"> Age must be number </div>
   <button (click)="onReset()">Reset</button>
 </form>
-{{form.valid | json}}
